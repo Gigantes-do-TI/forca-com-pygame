@@ -77,7 +77,7 @@ def jogo():
         boneco(erros)
 
         if erros == 6: #verifica se perdeu e aparece a mensagem de fim de jogo
-            fim_de_jogo('Perdeu')
+            fim_de_jogo('Que pena! Você errou!!')
             aberto = False
 
         texto(text, preto, None, 30, 50, 650)
@@ -114,7 +114,7 @@ def jogo():
             texto(chutes[x], vermelho, None, 30, x * 20, 700)
 
         if '_' not in acertos: #verificar se ganhou e aparece a mensagem de fim de jogo
-            fim_de_jogo('Ganhou')
+            fim_de_jogo('Parabéns! Você acertou!!')
             aberto = False
 
         pygame.display.update()
@@ -127,7 +127,7 @@ def selecionar_palavra():
     while aberto:
         janela.fill(branco)
 
-        texto('Qual palavra para a forca', azul, verde, 60, 50, 220)
+        texto('Qual é a palavra para a forca?', azul, verde, 60, 50, 220)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  #necessario para clicar no X e sair do jogo
@@ -162,7 +162,7 @@ def menu():
         texto('FORCA DA COVID19', branco, preto, 60, 240, 50)
         texto('1 - Jogar com palavras pre existentes', preto, None, 60, 50, 120)
         texto('2 - Escolher a palavra', preto, None, 60, 50, 190)
-        texto('selecione outra tecla para sair', preto, None, 60, 50, 260)
+        texto('3 - selecione  para sair', preto, None, 60, 50, 260)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  #necessario para clicar no X e sair do jogo
@@ -189,7 +189,7 @@ def fim_de_jogo(vitoria_derrota):
     while aberto:
         janela.fill(azul)
 
-        texto(vitoria_derrota, branco, None, 60, 350, 50)
+        texto(vitoria_derrota, branco, None, 60, 200, 50)
         texto(f'A palavra é {palavra}', branco, None, 60, 50, 120)
         explicacao()
 
@@ -211,11 +211,14 @@ def explicacao(): #complemento da função fim_de_jogo
             texto(textos[n], branco, None, 30, 50, 200 + 40 * n)
 
     if palavra == 'vírus':
-        texto_explicacao('O covid-19 é um virus contagioso, podendo causar até a morte')
+        texto_explicacao('O covid-19 é um virus contagioso que pode causar desde',
+                         'resfriados mais simples,até doenças respiratórias mais',
+                         'graves, podendo levar até a morte.')
 
     if palavra == 'contágio':
-        texto_explicacao('O covid-19 é muito contagioso. Temos que tomar as preucações',
-                         'necessárias para evitar o contagio e impedir que o vírus espalhe')
+        texto_explicacao('A covid-19 é muito contagiosa! É preciso tomar as',
+                         'precauções necessárias, para evitar o contágio e',
+                         'impedir que o vírus espalhe.')
 
     if palavra == 'tratamento':
         texto_explicacao('Até o momento (junho de 2020), não há vacinas,',
@@ -224,9 +227,10 @@ def explicacao(): #complemento da função fim_de_jogo
                          'e serão testados por meio de estudos clínicos')
 
     if palavra == 'saúde':
-        texto_explicacao('Mesmo sendo uma pessoa saudavel, é possivel',
-                         'contrair o COVID19. E os sintomas podem aparecer',
-                         'em qualquer individuo independente da idade ou saúde')
+        texto_explicacao('A covid-19 acomete principalmente idosos e indivíduos',
+                         'com doenças crônicas, no entanto,mesmo sendo',
+                         'saudável é possível contrair o vírus.Os sintomas',
+                         'podem aparecer em qualquer pessoa!')
 
     if palavra == 'pandemia':
         texto_explicacao('Em 11 de março de 2020 o COVID19 se tornou uma pandemia.',
@@ -236,27 +240,29 @@ def explicacao(): #complemento da função fim_de_jogo
     if palavra == 'solidariedade':
         texto_explicacao('A solidariedade nesses tempo de pandemia é algo',
                          'essencial para que possamos superar esse tempo dificil.',
-                         'Mesmo a distancia, devemos nos unir')
+                         'Mesmo a distancia, devemos nos unir.')
 
     if palavra == 'prevenção':
         texto_explicacao('Ainda (junho de 2020) não existe vacinas ou cura',
                          'para o COVID19, então a prevenção é o melhor remédio')
 
     if palavra == 'higiene':
-        texto_explicacao('A higienização é uma forma eficiente de',
-                         'combater o contágio do COVID19 e também de',
-                         'outros virus ou bactérias. Lave bem as maões')
+        texto_explicacao('A higienização é uma forma eficiente de amenizar',
+                         'o contágio pela COVID19 e também por outros vírus',
+                         'e/ou bactérias. Lave sempre bem as mãos.')
 
     if palavra == 'conscientização':
         texto_explicacao('Atravez da conscientização e da informação',
-                         'podemos evitar situações de risco para contrair',
-                         'doenças')
+                         'pode-se evitar que as pessoas se coloquem',
+                         'em situações de risco e contraiam a doença.')
 
     if palavra == 'confinamento':
-        texto_explicacao('A quarentena serve para que o virus COVID19',
-                         'não se espalhe. Essencial para achatar a',
-                         'curva de contaminação, isto é ter o menor',
-                         'numero de contaminados ao mesmo tempo')
+        texto_explicacao('O confinamento/quarentena serve para evitar a',
+                         'propagação da COVID19,no intuito de achatar',
+                         'a curva de contágio, isto é, desacelerar a',
+                         'disseminação do vírus, para que não hajam picos',
+                         'acelerados de infecções e sobrecarga do sistema',
+                         'de saúde.')
 
     if palavra == 'distanciamento':
         texto_explicacao('O distanciamento social se faz necessário',
@@ -264,14 +270,19 @@ def explicacao(): #complemento da função fim_de_jogo
                          'para lugares com pessoas, use máscara')
 
     if palavra == 'máscara':
-        texto_explicacao('A máscara ajuda a impedir que o virus se espalhe.',
-                         'Sendo um item essencial para evitar tanto que uma',
-                         'pessoa contaminada espalhe a doença e uma pessoa',
-                         'saudável contraia ela')
+        texto_explicacao('O Uso da máscara é para evitar o contato direto',
+                         'entre pessoas, reduzindo o risco de contaminação',
+                         'pelo vírus. Para pessoas saudáveis, a utilização de',
+                         'máscara e para preserva-lás da contaminação, já',
+                         'para pessoas contaminadas o uso de máscaras é',
+                         'para reduzir a transmissão, no entanto, a utilização',
+                         'de máscaras só é efetiva quando usadas em conjunto',
+                         'com a limpeza frequente das mãos com água e sabão',
+                         'ou higienizadas com álcool em gel 70%.')
 
     if palavra == 'álcool em gel':
-        texto_explicacao('O álcool em gel é utilizado para higienizar as mãos',
-                         'matando o vírus')
+        texto_explicacao('O álcool em gel é utilizado para higienizar as mãos,',
+                         'eliminando o vírus.')
 
 while True:
     try:
@@ -290,7 +301,7 @@ while True:
     elif num == '2':
         palavra = selecionar_palavra()
         jogo()
-    else:
+    elif num == '3':
         break
 
 pygame.quit()
